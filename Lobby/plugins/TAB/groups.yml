@@ -1,0 +1,15 @@
+owner:
+  tabprefix: '&c[OWNER] &c'
+  tabsuffix: '%alonsotags_tag_tab%'
+  header:
+  - '&bYou are playing on &e&lMC.FINEPIXEL.NET'
+  footer:
+  - '&aRanks, Booster & MORE! &c&lSTORE.FINEPIXEL.NET'
+per-world: {}
+_DEFAULT_:
+  tabprefix: '%Luckperms_prefix%'
+  tagprefix: '%Luckperms_prefix%'
+  tabsuffix: '%alonsotags_tag_tab%'
+  tagsuffix: '%alonsotags_tag_tab%'
+  customtabname: '%player%'
+  customtagname: '%player%'

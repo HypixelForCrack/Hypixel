@@ -1,0 +1,118 @@
+# Author: TheWinuXs
+# Version: 6.2.5.2
+
+Name-GUI: "&6Your Friends !"
+
+# Placeholders: %PLAYER%, %SERVER%, %GROUP%, %GROUP-PREFIX%, %GROUP-SUFFIX%, %USER-PREFIX%, %USER-SUFFIX%
+# Compatible with all plugins-permissions works with Vault !
+
+PlayerDisplayName-GUI: "%GROUP-PREFIX%&6%PLAYER%"
+
+Online-Lore:
+  - ""
+  - "&a➜ Online"
+  - "&7Server: &b%SERVER%"
+  - "&9Prefix: %GROUP-PREFIX%"
+  - "&9Suffix: %GROUP-SUFFIX%"
+
+Offline-Lore:
+  - ""
+  - "&c➜ Offline"
+  - ""
+  - "&9Prefix: %GROUP-PREFIX%"
+  - "&9Suffix: %GROUP-SUFFIX%"
+
+# /!\ Only for the GUI /!\
+# If you don't want a Item for open the menu leave space the 'ID'
+# If name is not set it's a default items
+OpenFriendListWith:
+  Items:
+    ID: CHEST
+    Name: "&6Friends List"
+    Lore:
+      - ""
+      - ""
+  Commands:
+    - flist
+
+Precedent-page:
+  Items:
+    ID: ARROW
+    Data: 0
+    Name: "&bPrecedent Page"
+    Lore:
+      - ""
+      - "&a➜ Click"
+Next-page:
+  Items:
+    ID: ARROW
+    Data: 0
+    Name: "&bNext Page"
+    Lore:
+      - ""
+      - "&a➜ Click"
+Close-Menu:
+  Items:
+    ID: BARRIER
+    Data: 0
+    Name: "&cClose"
+    Lore:
+      - ""
+      - "&a➜ Click"
+
+
+# FriendCommand info
+# Placeholders: %PLAYER%, %PLAYER-SERVER%, %PLAYER-GROUP%, %PLAYER-GROUP-PREFIX%, %PLAYER-GROUP-SUFFIX%, %PLAYER-USER-PREFIX%, %PLAYER-USER-SUFFIX%
+#               %FRIEND%, %FRIEND-SERVER%, %FRIEND-GROUP%, %FRIEND-GROUP-PREFIX%, %FRIEND-GROUP-SUFFIX%, %FRIEND-USER-PREFIX%, %FRIEND-USER-SUFFIX%
+
+Friend-Info:
+
+  Name-GUI: "%FRIEND-GROUP-PREFIX%%FRIEND%"
+  Slots: 9
+
+  Items:
+    Back:
+      Slot: 0
+      ID: ARROW
+      Data: 0
+      Name: "&7Back to the friend list"
+      Lore:
+        - ""
+        - "&a➜ Click"
+    Friend-Head:
+      Slot: 1
+      Name: "%FRIEND-GROUP-PREFIX%&l&c%FRIEND%"
+      Lore:
+        - ""
+        - "&a» Rank: %FRIEND-GROUP%"
+    Jump:
+      Slot: 7
+      ID: MAGMA_CREAM
+      Data: 0
+      Name: "&aJump to this friend !"
+      Lore:
+        - ""
+        - "&a➜ Click"
+    Remove:
+      Slot: 8
+      ID: STAINED_CLAY
+      Data: 14
+      Name: "&cRemove this friend !"
+      Lore:
+        - ""
+        - "&a➜ Click"
+
+
+# When a player join
+
+OnJoin:
+  FriendListItem:
+    Give: false
+    Slot: 4
+    
+# All the available sounds here: https://www.spigotmc.org/wiki/cc-sounds-list/ 
+Sounds: 
+  Requests: 
+  Join: 
+  Left: 
+

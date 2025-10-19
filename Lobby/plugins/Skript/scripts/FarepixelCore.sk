@@ -1,0 +1,169 @@
+# ───── FarepixelCore System Skript ─────
+# Command: /farepixelcommand:setspawn
+
+# ───── Set Spawn Command ─────
+command /farepixelcommand:setspawn:
+    permission: core
+    permission message: &cYou don't have permission to use this command!
+    trigger:
+        set {spawn.location} to location of player
+        send "&aSpawn point set successfully!" to player
+
+on join:
+    if {spawn.location} is set:
+        teleport player to {spawn.location}
+
+# ───── Spawn Command ─────
+command /spawn:
+    trigger:
+        if {spawn.location} is set:
+            teleport player to {spawn.location}
+        else:
+            send "&6[FAREPIXEL] &cSpawn point has not been set yet!"
+			
+# ───── Stuck Command ─────
+command /stuck:
+    trigger:
+        if {spawn.location} is set:
+            teleport player to {spawn.location}
+        else:
+            send "&6[FAREPIXEL] &cSpawn point has not been set yet!"
+			
+# ───── Lobby & Hub Commands ─────
+command /lobby:
+    trigger:
+        set {_lobbies::*} to "mini01L"
+        set {_random} to random element out of {_lobbies::*}
+        send "&aSending you to %{_random}%..."
+        execute console command "server %{_random}%"
+
+command /hub:
+    trigger:
+        set {_lobbies::*} to "mini01L"
+        set {_random} to random element out of {_lobbies::*}
+        send "&aSending you to %{_random}%..."
+        execute console command "server %{_random}%"
+		
+# ───── Enable PvP Command ─────
+command /farepixelcommand:enablepvp:
+    permission: core
+    permission message: &cYou don't have permission to use this command!
+    trigger:
+        set {pvp.enabled} to true
+        broadcast "&6[FAREPIXEL] &aPvP has been &aENABLED! Players can now fight each other."
+
+# ───── Disable PvP Command ─────
+command /farepixelcommand:disablepvp:
+    permission: core
+    permission message: &cYou don't have permission to use this command!
+    trigger:
+        set {pvp.enabled} to false
+        broadcast "&6[FAREPIXEL] &cPvP has been &cDISABLED! Players can no longer damage each other."
+
+# ───── PvP Damage Control ─────
+on damage:
+    attacker is a player
+    victim is a player
+    if {pvp.enabled} is not set:
+        set {pvp.enabled} to false
+    if {pvp.enabled} is false:
+        cancel event
+		
+# Default: both enabled
+on skript load:
+    if {blockbreak.enabled} is not set:
+        set {blockbreak.enabled} to true
+    if {blockplace.enabled} is not set:
+        set {blockplace.enabled} to true
+
+# ───── Default Block Permissions ─────
+on skript load:
+    if {blockbreak.enabled} is not set:
+        set {blockbreak.enabled} to true
+    if {blockplace.enabled} is not set:
+        set {blockplace.enabled} to true
+
+# ───── Toggle Block Break ─────
+command /disableblockbreak:
+    permission: core
+    permission message: &cYou don't have permission!
+    trigger:
+        set {blockbreak.enabled} to false
+        broadcast "&6[FAREPIXEL] &cBlock breaking has been &cDISABLED&c!"
+
+command /enableblockbreak:
+    permission: core
+    permission message: &cYou don't have permission!
+    trigger:
+        set {blockbreak.enabled} to true
+        broadcast "&6[FAREPIXEL] &aBlock breaking has been &aENABLED&a!"
+
+# ───── Toggle Block Place ─────
+command /disableblockplace:
+    permission: core
+    permission message: &cYou don't have permission!
+    trigger:
+        set {blockplace.enabled} to false
+        broadcast "&6[FAREPIXEL] &cBlock placing has been &cDISABLED&c!"
+
+command /enableblockplace:
+    permission: core
+    permission message: &cYou don't have permission!
+    trigger:
+        set {blockplace.enabled} to true
+        broadcast "&6[FAREPIXEL] &aBlock placing has been &aENABLED&a!"
+
+# ───── Control Breaking/Placing ─────
+on break:
+    if {blockbreak.enabled} is false:
+        cancel event
+
+on place:
+    if {blockplace.enabled} is false:
+        cancel event
+
+# ───── Join Messages Based on Permission/Rank ─────
+
+on join:
+    # Example: Rank VIP
+    if player has permission "joinmessage.vip":
+        send "&a[VIP] %player% &6Spooked in the lobby!" to all players
+
+    # Example: Rank VIP+
+    if player has permission "joinmessage.vip+":
+        send "&a[VIP&6+&a] %player% &6Spooked in the lobby!" to all players
+		
+	# Example: Rank MVP
+    if player has permission "joinmessage.mvp":
+        send "&b[MVP] %player% &6Spooked in the lobby!" to all players
+
+    # Example: Rank MVP+
+    if player has permission "joinmessage.mvp+":
+        send "&b[MVP&c+&b] %player% &6Spooked in the lobby!" to all players
+		
+	# Example: Rank MVP++
+    if player has permission "joinmessage.mvp++":
+        send "&b>&c>&a> &6[MVP&c++&6] %player% &6Spooked in the lobby! &a<&c<&b<" to all players
+
+    # Rank YOUTUBE
+    else if player has permission "joinmessage.youtube":
+        send "&b>&c>&a> &c[&fYOUTUBE&c] %player% &6Spooked in the lobby! &a<&c<&b<" to all players
+
+    # Rank JR HELPER
+    else if player has permission "joinmessage.jrhelper":
+        send "&b>&c>&a> &9[JR HELPER] %player% &6Spooked in the lobby! &a<&c<&b<" to all players
+		
+	# Rank HELPER
+    else if player has permission "joinmessage.helper":
+        send "&b>&c>&a> &9[HELPER] %player% &6Spooked in the lobby! &a<&c<&b<" to all players
+		
+	# Rank GM
+    else if player has permission "rank.gm":
+        send "&b>&c>&a> &2[GM] %player% &6Spooked in the lobby! &a<&c<&b<" to all players
+		
+	# Rank ADMIN
+    else if player has permission "rank.admin":
+        send "&b>&c>&a> &c[ADMIN] %player% &6joined the lobby! &a<&c<&b<" to all players
+
+    # Default rank / no permission
+    else:

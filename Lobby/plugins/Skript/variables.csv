@@ -1,0 +1,10 @@
+# === Skript's variable storage ===
+# Please do not modify this file manually!
+#
+# version: 2.6.5-for-1.8
+
+blockbreak.enabled, boolean, 00
+blockplace.enabled, boolean, 00
+pvp.enabled, boolean, 00
+spawn.location, location, 8605776F726C6480FF0000000181046E616D65208005776F726C64017809C04A3E5E98A624D30179094057A00000000000017A093FE03CC071A36D4E05706974636808C02B231E0379617708C2B4373E
+

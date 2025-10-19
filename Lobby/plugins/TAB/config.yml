@@ -1,0 +1,71 @@
+header-footer:
+  enabled: true
+  header:
+  - '&bYou are playing on &e&lMC.FINEPIXEL.NET'
+  footer:
+  - '&aRanks, Boosters & MORE! &c&lSTORE.FINEPIXEL.NET'
+  disable-condition: '%world%=disabledworld'
+debug: false
+use-online-uuid-in-tablist: true
+permission-refresh-interval: 1000
+belowname-objective:
+  fancy-display-default: NPC
+  fancy-display-players: '&c%health%'
+  enabled: false
+mysql:
+  enabled: false
+placeholders:
+  register-tab-expansion: true
+  time-offset: 0.0
+  time-format: '[HH:mm:ss / h:mm a]'
+  date-format: dd.MM.yyyy
+assign-groups-by-permissions: false
+primary-group-finding-list:
+- SLOTH
+- Owner
+- Admin
+- MOD
+- Helper
+- MVP++
+- MVP+
+- MVP
+- VIP+
+- VIP
+- Default
+ping-spoof:
+  enabled: false
+bossbar:
+  enabled: false
+prevent-spectator-effect:
+  enabled: false
+scoreboard:
+  enabled: false
+per-world-playerlist:
+  enabled: false
+layout:
+  enabled: false
+playerlist-objective:
+  enabled: true
+  value: '%ping%'
+  fancy-value: '&7Ping: %ping%'
+scoreboard-teams:
+  enabled: true
+  unlimited-nametag-mode:
+    enabled: true
+    disable-on-boats: true
+    dynamic-lines:
+    - abovename
+    - nametag
+    - belowname
+    - another
+  case-sensitive-sorting: true
+  sorting-types: []
+  invisible-nametags: false
+  can-see-friendly-invisibles: false
+  anti-override: true
+  enable-collision: 'true'
+global-playerlist:
+  enabled: false
+tablist-name-formatting:
+  enabled: true
+  anti-override: true
